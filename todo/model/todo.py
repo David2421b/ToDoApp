@@ -1,5 +1,5 @@
 # TODO: Add code here
-class Todo
+class Todo:
     def __init__(self, code_id: int, title: str, description: str):
         self.code_id: int = code_id
         self.title: str = title
@@ -20,9 +20,28 @@ class Todo
 
 class TodoBook:
     def __init__(self, todos):
-        self.todo = {}
+        self.todos = {}
 
     def add_todo(self, title:str, description: str) -> int:
+        id = len(self.todos) + 1
+        new_object = Todo (title, description)
+        self.todos [id] = new_object
+        return id
+
+    def pending_todos(self) -> list:
+        return [todo for todo in self.todos.values() if not todo.completed]
+
+    def completed_todos(self) -> list:
+        return [todo for todo in self.todos.values() if todo.completed]
+
+    def tags_todo_count(self):
+        tags_counter = {}
+        for todo in self.todos:
+            for tag in todo.tags:
+                if tag in tags_counter:
+                    tags_counter[tag] = tags_counter[tag] + 1
+
+
 
 
 
