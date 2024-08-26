@@ -40,6 +40,10 @@ class TodoBook:
             for tag in todo.tags:
                 if tag in tags_counter:
                     tags_counter[tag] = tags_counter[tag] + 1
+                else:
+                    tags_counter[tag ] = 1
+        return tags_counter
+
 
 
 
